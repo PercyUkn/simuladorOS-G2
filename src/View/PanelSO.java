@@ -37,7 +37,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
     // los históricos de ejecución y terminados
     public void actionPerformed(ActionEvent e) {
         if(encendido){
-            so.graficarColaProcesos(ColaProcesos,tblEjec,tblListos,tblBloqueados,tblFinal,tblHistEjec,tblHistBloqueados);
+            so.graficarColaProcesos(ColaProcesos,tblEjec,tblListos,tblBloqueados,tblFinal,tblHistEjec,tblHistBloqueados, tlbListaProcesos);
             so.generarEstadisticas(lblTiempoUso, lblTiempoOcioso, lblTiempoEspProm, lblDuracion);
             so.graficarEspacioMemoria(MemoriaRAM);
             txtPID.setText(Integer.toString(Proceso.numeroProcesos));
@@ -144,6 +144,9 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         PanelFinalizados = new javax.swing.JPanel();
         ScrollFinalizados = new javax.swing.JScrollPane();
         tblFinal = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        ScrollFinalizados1 = new javax.swing.JScrollPane();
+        tlbListaProcesos = new javax.swing.JTable();
         PanelTablaProcesosHistorico = new javax.swing.JPanel();
         PanelProcesosEjecutados = new javax.swing.JPanel();
         ScrollHistoricoEjec = new javax.swing.JScrollPane();
@@ -874,12 +877,41 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         PanelFinalizadosLayout.setHorizontalGroup(
             PanelFinalizadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelFinalizadosLayout.createSequentialGroup()
-                .addComponent(ScrollFinalizados)
+                .addComponent(ScrollFinalizados, javax.swing.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
                 .addContainerGap())
         );
         PanelFinalizadosLayout.setVerticalGroup(
             PanelFinalizadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ScrollFinalizados, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
+            .addComponent(ScrollFinalizados, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+        );
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista de Procesos"));
+
+        tlbListaProcesos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "PID", "Memoria", "Prioridad", "Estado"
+            }
+        ));
+        ScrollFinalizados1.setViewportView(tlbListaProcesos);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ScrollFinalizados1)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ScrollFinalizados1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout PanelTablasProcesosLayout = new javax.swing.GroupLayout(PanelTablasProcesos);
@@ -887,17 +919,18 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         PanelTablasProcesosLayout.setHorizontalGroup(
             PanelTablasProcesosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelTablasProcesosLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(PanelTablasProcesosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelTablasProcesosLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(PanelListos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(PanelBloqueados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(PanelEjecutando, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(PanelTablasProcesosLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(PanelFinalizados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(PanelFinalizados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         PanelTablasProcesosLayout.setVerticalGroup(
@@ -908,7 +941,9 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
                     .addComponent(PanelBloqueados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(PanelEjecutando, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelFinalizados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PanelTablasProcesosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PanelFinalizados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -1019,7 +1054,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(TabbedPaneSO, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1517, Short.MAX_VALUE)
+            .addComponent(TabbedPaneSO, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1100,7 +1135,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
             // a la cola de listos
             if(so.crearProcesoPersonalizado(bt)){
                 System.out.println("Se creo nuevo proceso personalizado");
-                so.graficarColaProcesos(ColaProcesos,tblEjec,tblListos,tblBloqueados,tblFinal,tblHistEjec,tblHistBloqueados);
+                so.graficarColaProcesos(ColaProcesos,tblEjec,tblListos,tblBloqueados,tblFinal,tblHistEjec,tblHistBloqueados,tlbListaProcesos);
                 //so.pintarListos(jpListos);
                 txtPID.setText(Proceso.numeroProcesos+"");
                 validate();
@@ -1214,6 +1249,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JScrollPane ScrollColaProcesos;
     private javax.swing.JScrollPane ScrollEjecutando;
     private javax.swing.JScrollPane ScrollFinalizados;
+    private javax.swing.JScrollPane ScrollFinalizados1;
     private javax.swing.JScrollPane ScrollHistoricoBloqueados;
     private javax.swing.JScrollPane ScrollHistoricoEjec;
     private javax.swing.JScrollPane ScrollListos;
@@ -1237,6 +1273,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAlgoritmoPlanificacion;
@@ -1256,6 +1293,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JTable tblHistBloqueados;
     private javax.swing.JTable tblHistEjec;
     private javax.swing.JTable tblListos;
+    private javax.swing.JTable tlbListaProcesos;
     private javax.swing.JLabel txtAsigMemoria;
     private javax.swing.JTextField txtBurstTime;
     private javax.swing.JLabel txtCapMemoria;

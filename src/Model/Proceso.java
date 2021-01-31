@@ -136,4 +136,15 @@ public class Proceso {
     public boolean isError(){
         return error;
     }
+    
+    public String getEstadoName(int estado){
+        switch (estado){
+            case 0: return "Nuevo";
+            case 1: return "Listo";
+            case 2: return "Ejecutando";
+            case 3: return "Bloqueado";
+            case 4: return "Finalizado";
+            default: return null;
+        }
+    }
 }

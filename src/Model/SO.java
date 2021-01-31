@@ -503,7 +503,7 @@ public class SO implements ISimulador{
     //Graficar Barras de Progreso de la Cola de Proceso
         
     public void graficarColaProcesos(JPanel jp, JTable tblEjec, JTable tblListos,
-            JTable tblBloqueados, JTable tblFinal,JTable tblHistEjec, JTable tblHistBloqueados){
+            JTable tblBloqueados, JTable tblFinal,JTable tblHistEjec, JTable tblHistBloqueados, JTable tlbListaProcesos){
         int MAX_ALTO = 120;
         jp.removeAll();
         for (int i = 0; i < planif.getColaProcesos().size(); i++) {
@@ -560,6 +560,7 @@ public class SO implements ISimulador{
         actualizarTablaBloqueados(tblBloqueados,1);
         actualizarTablaListos(tblListos);
         actualizarTablaFinalizados(tblFinal);
+        actualizarListaProcesos(tlbListaProcesos);
     }
     public void actualizarTablaEjecutando(JTable tablaEjecutando,int modo){
         DefaultTableModel tabla=(DefaultTableModel) tablaEjecutando.getModel();
@@ -656,6 +657,7 @@ public class SO implements ISimulador{
     
     public void actualizarTablaFinalizados(JTable tablaFinalizados){
         DefaultTableModel tabla=(DefaultTableModel) tablaFinalizados.getModel();
+        //Borra las entradas de la tabla
         tabla.setRowCount(0);
         for (Proceso procFinal: planif.getColaProcesos()){
             //Agrega los errores
@@ -669,6 +671,21 @@ public class SO implements ISimulador{
             if(procFinal.getEstado()==Proceso.FINALIZADO && procFinal.isError()==false){
                 Object [] fila= {procFinal.getPID(),"",
                     ((Integer) procFinal.getMemoria()).toString()+" MB", 
+                    };
+                    tabla.addRow(fila);
+            }
+        }
+    }
+    
+    public void actualizarListaProcesos(JTable tlbListaProcesos){
+        DefaultTableModel tabla=(DefaultTableModel) tlbListaProcesos.getModel();
+        //Borra las entradas de la tabla
+        tabla.setRowCount(0);
+        for (Proceso procFinal: planif.getColaProcesos()){
+            //Agrega los errores
+            if(procFinal.getEstado()!=Proceso.FINALIZADO){
+                Object [] fila= {procFinal.getPID(),
+                    ((Integer) procFinal.getMemoria()).toString()+" MB", procFinal.getPrioridad(), procFinal.getEstadoName(procFinal.getEstado())
                     };
                     tabla.addRow(fila);
             }
