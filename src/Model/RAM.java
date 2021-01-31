@@ -124,7 +124,7 @@ public class RAM extends LinkedList<Object>{
     //Métodos privados
     private void agregarSO(int memoria){
         add(new MemoriaSO(memoria));
-        add(new Hueco(capTotal - memoria-1, memoria+1));
+        add(new Hueco(capTotal - memoria+1, memoria));
     }
     
     public void setCapTotal(int capTotal) {

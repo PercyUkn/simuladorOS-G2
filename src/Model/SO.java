@@ -18,7 +18,7 @@ import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 public class SO implements ISimulador{
-    public static int maxMemoria = 2000;
+    public static int maxMemoria = 1999;
     public static int maxCantProcesos = 20;//nivel de multiprogramacion (n procesos como maximo en memoria)
 
     //Clase Interna
