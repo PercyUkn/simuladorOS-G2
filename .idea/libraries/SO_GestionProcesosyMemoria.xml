@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="SO_GestionProcesosyMemoria">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/SO_GestionProcesosyMemoria.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
