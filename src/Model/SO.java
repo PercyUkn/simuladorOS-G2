@@ -533,6 +533,7 @@ public class SO implements ISimulador{
                 +" Prioridad: "+p.getPrioridad()
                 +" Estado: "+est);
             ProgresoProceso.setOpaque(true);
+            //ProgresoProceso.setForeground(Color.red);
             switch(p.getEstado()){
                 case Proceso.EJECUTANDO:
                     ProgresoProceso.setBackground(Color.GREEN);

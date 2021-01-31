@@ -235,7 +235,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
 
         lblTipoPolitica.setText("Tipo de Politica");
 
-        cmbTipoPoliticaPlanif.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Apropiativo", "Expropiativo" }));
+        cmbTipoPoliticaPlanif.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No Expropiativo", "Expropiativo" }));
         cmbTipoPoliticaPlanif.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbTipoPoliticaPlanifActionPerformed(evt);
@@ -270,8 +270,8 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
                             .addComponent(lblAlgoritmoPlanificacion))
                         .addGap(20, 20, 20)
                         .addGroup(PanelPoliticaPlanifLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbTipoPoliticaPlanif, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cmbAlgoritmoPlanificacion, 0, 103, Short.MAX_VALUE))))
+                            .addComponent(cmbTipoPoliticaPlanif, 0, 103, Short.MAX_VALUE)
+                            .addComponent(cmbAlgoritmoPlanificacion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         PanelPoliticaPlanifLayout.setVerticalGroup(
@@ -314,7 +314,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
 
         txtCapMemoria.setText("Capacidad de la Memoria Principal");
 
-        cmbAsigMemoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Primero hueco", "Mejor hueco", "Peor hueco" }));
+        cmbAsigMemoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "First Fit", "Best Fit", "Worst Fit" }));
         cmbAsigMemoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbAsigMemoriaActionPerformed(evt);
@@ -491,7 +491,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        PanelEstadisticas.setBorder(javax.swing.BorderFactory.createTitledBorder("Panel de Estadísticas CPU"));
+        PanelEstadisticas.setBorder(javax.swing.BorderFactory.createTitledBorder("Panel de Estadísticas"));
 
         lblTiempoUso.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblTiempoUso.setText("0");
@@ -515,7 +515,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         jLabel3.setText("Tiempo de Espera Promedio (Procesos):");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel4.setText("Duración:");
+        jLabel4.setText("Duración de la simulación (milisegundos):");
 
         javax.swing.GroupLayout PanelEstadisticasLayout = new javax.swing.GroupLayout(PanelEstadisticas);
         PanelEstadisticas.setLayout(PanelEstadisticasLayout);
@@ -540,7 +540,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
                 .addGroup(PanelEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelEstadisticasLayout.createSequentialGroup()
                         .addComponent(lblDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 208, Short.MAX_VALUE))
+                        .addGap(0, 207, Short.MAX_VALUE))
                     .addGroup(PanelEstadisticasLayout.createSequentialGroup()
                         .addComponent(lblTiempoEspProm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
@@ -672,7 +672,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
                 .addComponent(LeyendaBloqueados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
                 .addComponent(LeyendaFinalizados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
@@ -1019,7 +1019,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(TabbedPaneSO, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(TabbedPaneSO, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1517, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1156,9 +1156,10 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        //L&F: Metal, Nimbus, Windows
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Metal".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
