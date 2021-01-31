@@ -134,20 +134,16 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         PanelEjecutando = new javax.swing.JPanel();
         ScrollEjecutando = new javax.swing.JScrollPane();
         tblEjec = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
         PanelListos = new javax.swing.JPanel();
         ScrollListos = new javax.swing.JScrollPane();
         tblListos = new javax.swing.JTable();
         PanelBloqueados = new javax.swing.JPanel();
         ScrollBloqueados = new javax.swing.JScrollPane();
         tblBloqueados = new javax.swing.JTable();
-        Flecha1 = new javax.swing.JLabel();
-        Flecha3 = new javax.swing.JLabel();
-        Flecha2 = new javax.swing.JLabel();
-        Flecha4 = new javax.swing.JLabel();
         PanelFinalizados = new javax.swing.JPanel();
         ScrollFinalizados = new javax.swing.JScrollPane();
         tblFinal = new javax.swing.JTable();
-        jLabel5 = new javax.swing.JLabel();
         PanelTablaProcesosHistorico = new javax.swing.JPanel();
         PanelProcesosEjecutados = new javax.swing.JPanel();
         ScrollHistoricoEjec = new javax.swing.JScrollPane();
@@ -157,6 +153,8 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         tblHistBloqueados = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        TabbedPaneSO.setMinimumSize(new java.awt.Dimension(1500, 500));
 
         PanelConfiguracion.setBorder(javax.swing.BorderFactory.createTitledBorder("Parámetros de los Procesos"));
 
@@ -393,7 +391,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
                     .addGroup(PanelVelocidadSimulacionLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel11)
-                        .addGap(119, 119, 119)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnPlayStop, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel12)))
@@ -403,8 +401,8 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
             PanelVelocidadSimulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelVelocidadSimulacionLayout.createSequentialGroup()
                 .addComponent(sldVelocidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PanelVelocidadSimulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(PanelVelocidadSimulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelVelocidadSimulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btnPlayStop, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel12))
@@ -425,7 +423,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
             PanelSimulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelSimulacionLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(PanelVelocidadSimulacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(PanelVelocidadSimulacion, javax.swing.GroupLayout.PREFERRED_SIZE, 120, Short.MAX_VALUE)
                 .addGap(14, 14, 14))
         );
 
@@ -517,7 +515,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         jLabel3.setText("Tiempo de Espera Promedio (Procesos):");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel4.setText("Duracion:");
+        jLabel4.setText("Duración:");
 
         javax.swing.GroupLayout PanelEstadisticasLayout = new javax.swing.GroupLayout(PanelEstadisticas);
         PanelEstadisticas.setLayout(PanelEstadisticasLayout);
@@ -542,7 +540,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
                 .addGroup(PanelEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelEstadisticasLayout.createSequentialGroup()
                         .addComponent(lblDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 16, Short.MAX_VALUE))
+                        .addGap(0, 208, Short.MAX_VALUE))
                     .addGroup(PanelEstadisticasLayout.createSequentialGroup()
                         .addComponent(lblTiempoEspProm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
@@ -666,19 +664,19 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
                 .addComponent(LeyendaEjec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                 .addComponent(LeyendaError, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                 .addComponent(LeyendaBloqueados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                 .addComponent(LeyendaFinalizados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
                 .addComponent(LeyendoListos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7)
@@ -739,7 +737,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
 
         PanelConfiguracion.getAccessibleContext().setAccessibleName("Parámetros de la Simulación");
 
-        TabbedPaneSO.addTab("Sistema Operativo", PanelSistemaOperativo);
+        TabbedPaneSO.addTab("Simulación", PanelSistemaOperativo);
 
         PanelEjecutando.setBorder(javax.swing.BorderFactory.createTitledBorder("Ejecutando"));
 
@@ -761,22 +759,32 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         });
         ScrollEjecutando.setViewportView(tblEjec);
 
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/cpu.png"))); // NOI18N
+
         javax.swing.GroupLayout PanelEjecutandoLayout = new javax.swing.GroupLayout(PanelEjecutando);
         PanelEjecutando.setLayout(PanelEjecutandoLayout);
         PanelEjecutandoLayout.setHorizontalGroup(
             PanelEjecutandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelEjecutandoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ScrollEjecutando)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelEjecutandoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(ScrollEjecutando, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addGap(167, 167, 167))
         );
         PanelEjecutandoLayout.setVerticalGroup(
             PanelEjecutandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelEjecutandoLayout.createSequentialGroup()
-                .addComponent(ScrollEjecutando, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(ScrollEjecutando, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(jLabel5)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
-        PanelListos.setBorder(javax.swing.BorderFactory.createTitledBorder("Listos"));
+        PanelListos.setBorder(javax.swing.BorderFactory.createTitledBorder("Cola de Listos"));
 
         tblListos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -801,19 +809,19 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         PanelListosLayout.setHorizontalGroup(
             PanelListosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelListosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ScrollListos, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(ScrollListos, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
                 .addContainerGap())
         );
         PanelListosLayout.setVerticalGroup(
             PanelListosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelListosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ScrollListos, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                .addComponent(ScrollListos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        PanelBloqueados.setBorder(javax.swing.BorderFactory.createTitledBorder("Bloqueados"));
+        PanelBloqueados.setBorder(javax.swing.BorderFactory.createTitledBorder("Cola de Espera"));
 
         tblBloqueados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -839,25 +847,17 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
             PanelBloqueadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelBloqueadosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ScrollBloqueados, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE)
+                .addComponent(ScrollBloqueados, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
                 .addContainerGap())
         );
         PanelBloqueadosLayout.setVerticalGroup(
             PanelBloqueadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelBloqueadosLayout.createSequentialGroup()
-                .addComponent(ScrollBloqueados, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                .addComponent(ScrollBloqueados, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        Flecha1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/FlechaTablaDerecha.png"))); // NOI18N
-
-        Flecha3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/FlechaTablaDiagonalIzquierda.png"))); // NOI18N
-
-        Flecha2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/FlechaTablaIzquierda.png"))); // NOI18N
-
-        Flecha4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/FlechaTablaDiagonalDerecha.png"))); // NOI18N
-
-        PanelFinalizados.setBorder(javax.swing.BorderFactory.createTitledBorder("Finalizados"));
+        PanelFinalizados.setBorder(javax.swing.BorderFactory.createTitledBorder("Procesos Finalizados"));
 
         tblFinal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -873,14 +873,14 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         PanelFinalizados.setLayout(PanelFinalizadosLayout);
         PanelFinalizadosLayout.setHorizontalGroup(
             PanelFinalizadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ScrollFinalizados, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(PanelFinalizadosLayout.createSequentialGroup()
+                .addComponent(ScrollFinalizados)
+                .addContainerGap())
         );
         PanelFinalizadosLayout.setVerticalGroup(
             PanelFinalizadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ScrollFinalizados, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+            .addComponent(ScrollFinalizados, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
         );
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/FlechaTablaDiagonalCurva.png"))); // NOI18N
 
         javax.swing.GroupLayout PanelTablasProcesosLayout = new javax.swing.GroupLayout(PanelTablasProcesos);
         PanelTablasProcesos.setLayout(PanelTablasProcesosLayout);
@@ -889,65 +889,32 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
             .addGroup(PanelTablasProcesosLayout.createSequentialGroup()
                 .addGroup(PanelTablasProcesosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelTablasProcesosLayout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(PanelBloqueados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addComponent(PanelListos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(PanelBloqueados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(PanelEjecutando, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(PanelTablasProcesosLayout.createSequentialGroup()
-                        .addGroup(PanelTablasProcesosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PanelTablasProcesosLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(PanelListos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(PanelTablasProcesosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Flecha1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Flecha2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(PanelTablasProcesosLayout.createSequentialGroup()
-                                .addGap(108, 108, 108)
-                                .addComponent(Flecha4)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(PanelTablasProcesosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(PanelEjecutando, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Flecha3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTablasProcesosLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(PanelFinalizados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(163, 163, 163))
+                        .addGap(20, 20, 20)
+                        .addComponent(PanelFinalizados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         PanelTablasProcesosLayout.setVerticalGroup(
             PanelTablasProcesosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelTablasProcesosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanelTablasProcesosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelTablasProcesosLayout.createSequentialGroup()
-                        .addGroup(PanelTablasProcesosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PanelTablasProcesosLayout.createSequentialGroup()
-                                .addGroup(PanelTablasProcesosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(PanelTablasProcesosLayout.createSequentialGroup()
-                                        .addComponent(Flecha1)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(Flecha2))
-                                    .addComponent(PanelListos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Flecha4))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTablasProcesosLayout.createSequentialGroup()
-                                .addComponent(PanelEjecutando, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(Flecha3)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PanelBloqueados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelTablasProcesosLayout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(jLabel5)))
-                .addGap(18, 18, 18)
-                .addComponent(PanelFinalizados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addGroup(PanelTablasProcesosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(PanelListos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PanelBloqueados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PanelEjecutando, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PanelFinalizados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        TabbedPaneSO.addTab("Tablas de Procesos", PanelTablasProcesos);
+        TabbedPaneSO.addTab("Colas de Procesos", PanelTablasProcesos);
 
-        PanelProcesosEjecutados.setBorder(javax.swing.BorderFactory.createTitledBorder("Historico de Procesos Ejecutados"));
+        PanelProcesosEjecutados.setBorder(javax.swing.BorderFactory.createTitledBorder("Registro de Ejecución de Procesos"));
 
         tblHistEjec.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -973,18 +940,20 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
             PanelProcesosEjecutadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelProcesosEjecutadosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ScrollHistoricoEjec, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+                .addComponent(ScrollHistoricoEjec, javax.swing.GroupLayout.DEFAULT_SIZE, 836, Short.MAX_VALUE)
                 .addContainerGap())
         );
         PanelProcesosEjecutadosLayout.setVerticalGroup(
             PanelProcesosEjecutadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelProcesosEjecutadosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ScrollHistoricoEjec)
+                .addComponent(ScrollHistoricoEjec, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
+        PanelProcesosBloqueados.setVisible(false);
         PanelProcesosBloqueados.setBorder(javax.swing.BorderFactory.createTitledBorder("Historico de Procesos Bloqueados"));
+        PanelProcesosBloqueados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         tblHistBloqueados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1027,32 +996,34 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
             PanelTablaProcesosHistoricoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelTablaProcesosHistoricoLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(PanelProcesosEjecutados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PanelProcesosEjecutados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(PanelProcesosBloqueados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(34, 34, 34))
         );
         PanelTablaProcesosHistoricoLayout.setVerticalGroup(
             PanelTablaProcesosHistoricoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelTablaProcesosHistoricoLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(PanelTablaProcesosHistoricoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(PanelProcesosBloqueados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PanelProcesosEjecutados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(287, Short.MAX_VALUE))
+                .addGroup(PanelTablaProcesosHistoricoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PanelProcesosEjecutados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PanelTablaProcesosHistoricoLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(PanelProcesosBloqueados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(272, Short.MAX_VALUE))
         );
 
-        TabbedPaneSO.addTab("Historico de Tablas de Procesos", PanelTablaProcesosHistorico);
+        TabbedPaneSO.addTab("Historial de Procesos", PanelTablaProcesosHistorico);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(TabbedPaneSO, javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(TabbedPaneSO, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TabbedPaneSO)
+            .addComponent(TabbedPaneSO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -1213,10 +1184,6 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ColaProcesos;
-    private javax.swing.JLabel Flecha1;
-    private javax.swing.JLabel Flecha2;
-    private javax.swing.JLabel Flecha3;
-    private javax.swing.JLabel Flecha4;
     private javax.swing.JPanel LeyendaBloqueados;
     private javax.swing.JPanel LeyendaEjec;
     private javax.swing.JPanel LeyendaError;
