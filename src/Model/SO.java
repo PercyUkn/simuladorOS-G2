@@ -810,7 +810,7 @@ public class SO implements ISimulador{
             JLabel tEsperaProm, JLabel tDuracion, JLabel lblFragmentacion){
         tUso.setText(Long.toString(cpu.tiempoUso));
         tOcio.setText(Long.toString(cpu.tiempoOcioso));
-        tEsperaProm.setText(" "+planif.getTiempoEsperaProm());
+        tEsperaProm.setText(" "+planif.getTiempoEsperaProm()+ " ms");
         tDuracion.setText(Long.toString(planif.getTiempoFinal()));
         lblFragmentacion.setText(Integer.toString(calcularFragmentacion())+" MB");
     }

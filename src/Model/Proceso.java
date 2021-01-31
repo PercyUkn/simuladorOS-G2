@@ -15,6 +15,8 @@ public class Proceso {
     private long tiempoCreacion;
     //momento en el que el proceso finaliza
     private long tiempoFinalizacion;
+    //momento en el que el proceso finaliza
+    private long tiempoPrimeraAtencion = -1;
     //cantidad de memoria que se le asigna al inicio de la creacion
     private int memoriaInicio;
     
