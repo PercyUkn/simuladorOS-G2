@@ -16,7 +16,7 @@ public final class PanelRAM extends javax.swing.JPanel {
                 +"MB)");
         setDirInicial(p.getMemoriaInicio());
         setDirFinal(p.getMemoriaInicio() + p.getMemoria());
-        setColorFondo(Color.CYAN);
+        setColorFondo(Color.orange);
     }
     
     public static PanelRAM createHueco(int dirInicial, int dirFinal){
@@ -24,7 +24,7 @@ public final class PanelRAM extends javax.swing.JPanel {
         e.setDirInicial(dirInicial);
         e.setDirFinal(dirFinal);
         e.jLabel1.setText("Hueco "+(dirFinal-dirInicial)+"MB");
-        e.setColorFondo(Color.lightGray);
+        e.setColorFondo(Color.CYAN);
         return e;
     }
     
@@ -33,7 +33,7 @@ public final class PanelRAM extends javax.swing.JPanel {
         e.setDirInicial(0);
         e.setDirFinal(memoria);
         e.jLabel1.setText("MEMORIA DEL SO: "+memoria+"MB");
-        e.setColorFondo(Color.PINK);
+        e.setColorFondo(Color.green);
         e.setPreferredSize(new Dimension(100, 100));
         return e;
     }

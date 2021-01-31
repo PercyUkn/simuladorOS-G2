@@ -198,8 +198,8 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
                         .addComponent(txtBurstTime, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PanelProcesosLayout.createSequentialGroup()
                         .addComponent(chbValoresAleatorios)
-                        .addGap(0, 36, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelProcesosLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnAddProceso)
@@ -208,7 +208,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         PanelProcesosLayout.setVerticalGroup(
             PanelProcesosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelProcesosLayout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(PanelProcesosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPID))
@@ -311,9 +311,9 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
 
         PoliticaConfigAdic.setBorder(javax.swing.BorderFactory.createTitledBorder("Configuraciones Adicionales"));
 
-        txtAsigMemoria.setText("Asignacion Memoria");
+        txtAsigMemoria.setText("Algoritmo de Asignación de Memoria");
 
-        txtCapMemoria.setText("Capacidad Memoria");
+        txtCapMemoria.setText("Capacidad de la Memoria Principal");
 
         cmbAsigMemoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Primero hueco", "Mejor hueco", "Peor hueco" }));
         cmbAsigMemoria.addActionListener(new java.awt.event.ActionListener() {
@@ -335,16 +335,17 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
             PoliticaConfigAdicLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PoliticaConfigAdicLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PoliticaConfigAdicLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtCapMemoria)
+                    .addComponent(txtAsigMemoria))
                 .addGroup(PoliticaConfigAdicLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PoliticaConfigAdicLayout.createSequentialGroup()
-                        .addComponent(txtCapMemoria)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PoliticaConfigAdicLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(spnCapMemoria, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PoliticaConfigAdicLayout.createSequentialGroup()
-                        .addComponent(txtAsigMemoria)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(74, 74, 74)
                         .addComponent(cmbAsigMemoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(127, 127, 127))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PoliticaConfigAdicLayout.setVerticalGroup(
             PoliticaConfigAdicLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -480,28 +481,28 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
 
         PanelEstadisticas.setBorder(javax.swing.BorderFactory.createTitledBorder("Panel de Estadisticas CPU"));
 
-        lblTiempoUso.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblTiempoUso.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblTiempoUso.setText("0");
 
-        lblTiempoOcioso.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblTiempoOcioso.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblTiempoOcioso.setText("0");
 
-        lblTiempoEspProm.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblTiempoEspProm.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblTiempoEspProm.setText("0");
 
-        lblDuracion.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblDuracion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblDuracion.setText("0");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("Tiempo de Uso:");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Tiempo ocioso:");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel3.setText("Tiempo de Espera Promedio:");
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel3.setText("Tiempo de Espera Promedio (Procesos):");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Duracion:");
 
         javax.swing.GroupLayout PanelEstadisticasLayout = new javax.swing.GroupLayout(PanelEstadisticas);
@@ -514,40 +515,40 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
                     .addGroup(PanelEstadisticasLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(lblTiempoUso, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelEstadisticasLayout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblTiempoUso, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3))
                     .addGroup(PanelEstadisticasLayout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblTiempoOcioso, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelEstadisticasLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addGap(22, 22, 22)
+                        .addComponent(lblTiempoOcioso, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblTiempoEspProm, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jLabel4)))
+                .addGap(29, 29, 29)
+                .addGroup(PanelEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelEstadisticasLayout.createSequentialGroup()
+                        .addComponent(lblDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 16, Short.MAX_VALUE))
+                    .addGroup(PanelEstadisticasLayout.createSequentialGroup()
+                        .addComponent(lblTiempoEspProm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         PanelEstadisticasLayout.setVerticalGroup(
             PanelEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelEstadisticasLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
                 .addGroup(PanelEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(lblTiempoUso))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PanelEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(lblTiempoOcioso))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PanelEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTiempoUso)
                     .addComponent(jLabel3)
                     .addComponent(lblTiempoEspProm))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PanelEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(lblTiempoOcioso)
                     .addComponent(jLabel4)
                     .addComponent(lblDuracion))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -670,11 +671,11 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
                 .addComponent(LeyendaBloqueados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel8)
-                .addGap(59, 59, 59)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(LeyendaFinalizados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
-                .addGap(42, 42, 42)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(LeyendoListos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7)
