@@ -23,10 +23,11 @@ public class RAM extends LinkedList<Object>{
                 for (Object o : this) {
                     if(o instanceof Hueco){
                         Hueco h = (Hueco)o;
+                        // El primer hueco que entre
                         if(h.getCapacidad()>p.getMemoria()){
                             p.setMemoriaInicio(h.getDirInicio());
-                            h.setDirInicio(h.getDirInicio()+p.getMemoria()+1);
-                            h.setCapacidad(h.getCapacidad()-p.getMemoria()-1);
+                            h.setDirInicio(h.getDirInicio()+p.getMemoria());
+                            h.setCapacidad(h.getCapacidad()-p.getMemoria());
                             add(indexOf(o), p);
                             return true;
                         }
@@ -44,8 +45,8 @@ public class RAM extends LinkedList<Object>{
                 for (Hueco h : huecos) {
                     if(h.getCapacidad()>p.getMemoria()){
                         p.setMemoriaInicio(h.getDirInicio());
-                        h.setDirInicio(h.getDirInicio()+p.getMemoria()+1);
-                        h.setCapacidad(h.getCapacidad()-p.getMemoria()-1);
+                        h.setDirInicio(h.getDirInicio()+p.getMemoria());
+                        h.setCapacidad(h.getCapacidad()-p.getMemoria());
                         add(indexOf(h), p);
                         return true;
                     }
@@ -62,8 +63,8 @@ public class RAM extends LinkedList<Object>{
                 for (Hueco h : huecos1) {
                     if(h.getCapacidad()>p.getMemoria()){
                         p.setMemoriaInicio(h.getDirInicio());
-                        h.setDirInicio(h.getDirInicio()+p.getMemoria()+1);
-                        h.setCapacidad(h.getCapacidad()-p.getMemoria()-1);
+                        h.setDirInicio(h.getDirInicio()+p.getMemoria());
+                        h.setCapacidad(h.getCapacidad()-p.getMemoria());
                         add(indexOf(h), p);
                         return true;
                     }

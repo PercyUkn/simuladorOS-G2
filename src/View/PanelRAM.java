@@ -15,7 +15,7 @@ public final class PanelRAM extends javax.swing.JPanel {
         jLabel1.setText("PID "+p.getPID()+" ("+p.getMemoria()
                 +"MB)");
         setDirInicial(p.getMemoriaInicio());
-        setDirFinal(p.getMemoriaInicio() + p.getMemoria());
+        setDirFinal(p.getMemoriaInicio() + p.getMemoria()-1);
         setColorFondo(Color.orange);
     }
     
