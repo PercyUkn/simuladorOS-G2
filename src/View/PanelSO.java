@@ -38,7 +38,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(encendido){
             so.graficarColaProcesos(ColaProcesos,tblEjec,tblListos,tblBloqueados,tblFinal,tblHistEjec,tblHistBloqueados, tlbListaProcesos, tlbDisco,tlbImpresora,tlbTeclado,tlbMouse,tlbUSB);
-            so.generarEstadisticas(lblTiempoUso, lblTiempoOcioso, lblTiempoEspProm, lblDuracion,lblFragmentacion);
+            so.generarEstadisticas(lblTiempoUso, lblTiempoOcioso, lblTiempoEspProm, lblDuracion,lblFragmentacion,lblTiempoRespuesta);
             so.graficarEspacioMemoria(MemoriaRAM);
             txtPID.setText(Integer.toString(Proceso.numeroProcesos));
             validate();
@@ -121,6 +121,8 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         jLabel4 = new javax.swing.JLabel();
         lblFragmentacion = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        lblTiempoRespuesta = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         PanelLeyendaProcesos = new javax.swing.JPanel();
         LeyendaEjec = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -530,7 +532,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         jLabel1.setText("Tiempo de uso (CPU):");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setText("Tiempo ocioso:");
+        jLabel2.setText("Tiempo ocioso (CPU):");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Tiempo de Retorno Promedio (Procesos):");
@@ -544,6 +546,12 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel13.setText("Fragmentación Externa:");
 
+        lblTiempoRespuesta.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblTiempoRespuesta.setText("0");
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel14.setText("Tiempo de Respuesta Promedio (Procesos):");
+
         javax.swing.GroupLayout PanelEstadisticasLayout = new javax.swing.GroupLayout(PanelEstadisticas);
         PanelEstadisticas.setLayout(PanelEstadisticasLayout);
         PanelEstadisticasLayout.setHorizontalGroup(
@@ -552,32 +560,34 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
                 .addContainerGap()
                 .addGroup(PanelEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelEstadisticasLayout.createSequentialGroup()
-                        .addGroup(PanelEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PanelEstadisticasLayout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(55, 55, 55)
-                                .addComponent(lblTiempoOcioso, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel4))
-                            .addGroup(PanelEstadisticasLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblTiempoUso, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(PanelEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PanelEstadisticasLayout.createSequentialGroup()
-                                .addComponent(lblDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 191, Short.MAX_VALUE))
-                            .addGroup(PanelEstadisticasLayout.createSequentialGroup()
-                                .addComponent(lblTiempoEspProm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())))
-                    .addGroup(PanelEstadisticasLayout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblFragmentacion, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel4))
+                    .addGroup(PanelEstadisticasLayout.createSequentialGroup()
+                        .addGroup(PanelEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(PanelEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelEstadisticasLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(lblTiempoUso, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelEstadisticasLayout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(lblTiempoOcioso, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(7, 7, 7)
+                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(18, 18, 18)
+                .addGroup(PanelEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTiempoEspProm, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                    .addGroup(PanelEstadisticasLayout.createSequentialGroup()
+                        .addComponent(lblDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lblTiempoRespuesta, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE))
+                .addContainerGap())
         );
         PanelEstadisticasLayout.setVerticalGroup(
             PanelEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -592,12 +602,14 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
                 .addGroup(PanelEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(lblTiempoOcioso)
-                    .addComponent(jLabel4)
-                    .addComponent(lblDuracion))
+                    .addComponent(jLabel14)
+                    .addComponent(lblTiempoRespuesta))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PanelEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(lblFragmentacion))
+                    .addComponent(lblFragmentacion)
+                    .addComponent(jLabel4)
+                    .addComponent(lblDuracion))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
@@ -1487,6 +1499,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1511,6 +1524,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JLabel lblPID;
     private javax.swing.JLabel lblTiempoEspProm;
     private javax.swing.JLabel lblTiempoOcioso;
+    private javax.swing.JLabel lblTiempoRespuesta;
     private javax.swing.JLabel lblTiempoUso;
     private javax.swing.JLabel lblTipoPolitica;
     private javax.swing.JSlider sldVelocidad;

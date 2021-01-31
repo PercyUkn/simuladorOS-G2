@@ -126,6 +126,7 @@ public class SO implements ISimulador{
         int quantum = 10;
         //cada 51 ms ejecute el método ActionPerformed
         private final Timer t = new Timer(51, this);
+        // Contiene la lista de todos los procesos
         private final ColaProcesos cp = new ColaProcesos();
         private final ColaES ces = new ColaES();
         private final ColaListos cl = new ColaListos();
@@ -187,9 +188,30 @@ public class SO implements ISimulador{
             return tProm;
         }
         
+         public float getTiempoPrimeraAtencionProm(){
+            int n = 0;
+            float tProm = 0;
+            long tTotal = 0;
+            for (Proceso p : cp) {
+                if(p.getTiempoPrimeraAtencion()!=-1){
+                    n++;
+                    //Falta corregir, para que se vea reflejado el tiempo de espera real
+                    tTotal += p.getTiempoPrimeraAtencion();
+                }
+            }
+            if(n>0){
+                tProm = (tTotal)/n;
+            }
+            return tProm;
+        }
+        
         public long getTiempoFinal(){
             if(cp.size()>0 && cp.getCantProcesosActivos()==0 && duracion<1){
                 duracion = System.currentTimeMillis() - tiempoInicio;
+                // Para saber que contiene el cp
+                /*for (Proceso p: cp){
+                    System.out.println("Proceso: " + p.getPID());
+                }*/
             }
             return duracion;
         }
@@ -267,6 +289,7 @@ public class SO implements ISimulador{
                 cl.sort(Comparadores.getComparador(politica));
         }
         
+        // Planificación Expropiativa
         private void planificarNoApropiativa(){
             Proceso act = cpu.getActual();
             procesoSiguiente = null;
@@ -331,6 +354,7 @@ public class SO implements ISimulador{
             }
         }
         
+        //Planificación No Expropiativa
         private void planificarApropiativa(){
             procesoSiguiente = null;
             Proceso act = cpu.getActual();
@@ -488,11 +512,20 @@ public class SO implements ISimulador{
             comunicarInterrupciones();
         }
 
+        // Ejecuta el proceso
         public void setActual(Proceso p){
             pActual = p;
             if(p!=null && p.getEstado()!=Proceso.BLOQUEADO 
                     && p.getEstado()!=Proceso.FINALIZADO)
+            {
                 p.setEstado(Proceso.EJECUTANDO);
+                // Para calcular el tiempo de respuesta promedio
+                if (p.getTiempoPrimeraAtencion()==-1) 
+                {
+                    p.setTiempoPrimeraAtencion(System.currentTimeMillis()-p.getTiempoCreacion());
+                    
+                }
+            }
         }
 
         public Proceso getActual(){
@@ -807,12 +840,13 @@ public class SO implements ISimulador{
     }
     
     public void generarEstadisticas(JLabel tUso, JLabel tOcio,
-            JLabel tEsperaProm, JLabel tDuracion, JLabel lblFragmentacion){
+            JLabel tEsperaProm, JLabel tDuracion, JLabel lblFragmentacion, JLabel lblTiempoRespuesta){
         tUso.setText(Long.toString(cpu.tiempoUso));
         tOcio.setText(Long.toString(cpu.tiempoOcioso));
-        tEsperaProm.setText(" "+planif.getTiempoEsperaProm()+ " ms");
+        tEsperaProm.setText(""+planif.getTiempoEsperaProm()+ " ms");
         tDuracion.setText(Long.toString(planif.getTiempoFinal()));
         lblFragmentacion.setText(Integer.toString(calcularFragmentacion())+" MB");
+        lblTiempoRespuesta.setText(""+planif.getTiempoPrimeraAtencionProm()+" ms");
     }
         
     public void graficarEspacioMemoria(JPanel jp){

@@ -138,6 +138,14 @@ public class Proceso {
     public boolean isError(){
         return error;
     }
+
+    public long getTiempoPrimeraAtencion() {
+        return tiempoPrimeraAtencion;
+    }
+
+    public void setTiempoPrimeraAtencion(long tiempoPrimeraAtencion) {
+        this.tiempoPrimeraAtencion = tiempoPrimeraAtencion;
+    }
     
     public String getEstadoName(int estado){
         switch (estado){
@@ -149,4 +157,10 @@ public class Proceso {
             default: return null;
         }
     }
+
+    public long getTiempoCreacion() {
+        return tiempoCreacion;
+    }
+    
+    
 }
