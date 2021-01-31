@@ -37,7 +37,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
     // los históricos de ejecución y terminados
     public void actionPerformed(ActionEvent e) {
         if(encendido){
-            so.graficarColaProcesos(ColaProcesos,tblEjec,tblListos,tblBloqueados,tblFinal,tblHistEjec,tblHistBloqueados, tlbListaProcesos, tlbDisco);
+            so.graficarColaProcesos(ColaProcesos,tblEjec,tblListos,tblBloqueados,tblFinal,tblHistEjec,tblHistBloqueados, tlbListaProcesos, tlbDisco,tlbImpresora,tlbTeclado,tlbMouse,tlbUSB);
             so.generarEstadisticas(lblTiempoUso, lblTiempoOcioso, lblTiempoEspProm, lblDuracion);
             so.graficarEspacioMemoria(MemoriaRAM);
             txtPID.setText(Integer.toString(Proceso.numeroProcesos));
@@ -56,13 +56,13 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
             }
             t.start();
             encendido = true;
-            btnPlayStop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/BotonStop.jpg")));
+            btnPlayStop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/stop.png")));
         }else{
             t.stop();
             so.parar();
             u.parar();
             encendido = false;
-            btnPlayStop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/BotonPlay.jpg")));
+            btnPlayStop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/play.png")));
         }
     }
     /**
@@ -158,6 +158,18 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         jPanel3 = new javax.swing.JPanel();
         ScrollFinalizados2 = new javax.swing.JScrollPane();
         tlbDisco = new javax.swing.JTable();
+        jPanel5 = new javax.swing.JPanel();
+        ScrollFinalizados3 = new javax.swing.JScrollPane();
+        tlbImpresora = new javax.swing.JTable();
+        jPanel6 = new javax.swing.JPanel();
+        ScrollFinalizados4 = new javax.swing.JScrollPane();
+        tlbTeclado = new javax.swing.JTable();
+        jPanel7 = new javax.swing.JPanel();
+        ScrollFinalizados5 = new javax.swing.JScrollPane();
+        tlbMouse = new javax.swing.JTable();
+        jPanel8 = new javax.swing.JPanel();
+        ScrollFinalizados6 = new javax.swing.JScrollPane();
+        tlbUSB = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -377,7 +389,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
             }
         });
 
-        btnPlayStop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/BotonPlay.jpg"))); // NOI18N
+        btnPlayStop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/play.png"))); // NOI18N
         btnPlayStop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPlayStopActionPerformed(evt);
@@ -1071,16 +1083,132 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(24, 24, 24)
                 .addComponent(ScrollFinalizados2, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addContainerGap()
                 .addComponent(ScrollFinalizados2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Impresora"));
+
+        tlbImpresora.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "#", "PID", "Memoria"
+            }
+        ));
+        ScrollFinalizados3.setViewportView(tlbImpresora);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ScrollFinalizados3, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ScrollFinalizados3, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Teclado"));
+
+        tlbTeclado.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "#", "PID", "Memoria"
+            }
+        ));
+        ScrollFinalizados4.setViewportView(tlbTeclado);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ScrollFinalizados4, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ScrollFinalizados4, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
+
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Mouse"));
+
+        tlbMouse.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "#", "PID", "Memoria"
+            }
+        ));
+        ScrollFinalizados5.setViewportView(tlbMouse);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(ScrollFinalizados5, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ScrollFinalizados5, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("USB"));
+
+        tlbUSB.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "#", "PID", "Memoria"
+            }
+        ));
+        ScrollFinalizados6.setViewportView(tlbUSB);
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(ScrollFinalizados6, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ScrollFinalizados6, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -1088,16 +1216,33 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(146, 146, 146)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1120, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(283, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(475, 475, 475))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(425, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
 
         TabbedPaneSO.addTab("Colas I/O", jPanel4);
@@ -1187,7 +1332,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
             // a la cola de listos
             if(so.crearProcesoPersonalizado(bt)){
                 System.out.println("Se creo nuevo proceso personalizado");
-                so.graficarColaProcesos(ColaProcesos,tblEjec,tblListos,tblBloqueados,tblFinal,tblHistEjec,tblHistBloqueados,tlbListaProcesos,tlbDisco);
+                so.graficarColaProcesos(ColaProcesos,tblEjec,tblListos,tblBloqueados,tblFinal,tblHistEjec,tblHistBloqueados,tlbListaProcesos,tlbDisco,tlbImpresora,tlbTeclado,tlbMouse,tlbUSB);
                 //so.pintarListos(jpListos);
                 txtPID.setText(Proceso.numeroProcesos+"");
                 validate();
@@ -1303,6 +1448,10 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JScrollPane ScrollFinalizados;
     private javax.swing.JScrollPane ScrollFinalizados1;
     private javax.swing.JScrollPane ScrollFinalizados2;
+    private javax.swing.JScrollPane ScrollFinalizados3;
+    private javax.swing.JScrollPane ScrollFinalizados4;
+    private javax.swing.JScrollPane ScrollFinalizados5;
+    private javax.swing.JScrollPane ScrollFinalizados6;
     private javax.swing.JScrollPane ScrollHistoricoBloqueados;
     private javax.swing.JScrollPane ScrollHistoricoEjec;
     private javax.swing.JScrollPane ScrollListos;
@@ -1330,6 +1479,10 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAlgoritmoPlanificacion;
     private javax.swing.JLabel lblBursTime;
@@ -1349,7 +1502,11 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JTable tblHistEjec;
     private javax.swing.JTable tblListos;
     private javax.swing.JTable tlbDisco;
+    private javax.swing.JTable tlbImpresora;
     private javax.swing.JTable tlbListaProcesos;
+    private javax.swing.JTable tlbMouse;
+    private javax.swing.JTable tlbTeclado;
+    private javax.swing.JTable tlbUSB;
     private javax.swing.JLabel txtAsigMemoria;
     private javax.swing.JTextField txtBurstTime;
     private javax.swing.JLabel txtCapMemoria;

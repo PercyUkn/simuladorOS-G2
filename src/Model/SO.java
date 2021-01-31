@@ -504,7 +504,8 @@ public class SO implements ISimulador{
     //Graficar Barras de Progreso de la Cola de Proceso
         
     public void graficarColaProcesos(JPanel jp, JTable tblEjec, JTable tblListos,
-            JTable tblBloqueados, JTable tblFinal,JTable tblHistEjec, JTable tblHistBloqueados, JTable tlbListaProcesos, JTable tlbDisco){
+            JTable tblBloqueados, JTable tblFinal,JTable tblHistEjec, JTable tblHistBloqueados, JTable tlbListaProcesos, JTable tlbDisco, 
+            JTable tlbImpresora, JTable tlbTeclado, JTable tlbMouse, JTable tlbUSB){
         int MAX_ALTO = 120;
         jp.removeAll();
         for (int i = 0; i < planif.getColaProcesos().size(); i++) {
@@ -560,6 +561,10 @@ public class SO implements ISimulador{
         actualizarTablaBloqueados(tblHistBloqueados,2);
         actualizarTablaBloqueados(tblBloqueados,1);
         actualizarTablaBloqueados(tlbDisco,3);
+        actualizarTablaBloqueados(tlbImpresora,4);
+        actualizarTablaBloqueados(tlbTeclado,5);
+        actualizarTablaBloqueados(tlbMouse,6);
+        actualizarTablaBloqueados(tlbUSB,7);
         actualizarTablaListos(tblListos);
         actualizarTablaFinalizados(tblFinal);
         actualizarListaProcesos(tlbListaProcesos);
@@ -659,15 +664,99 @@ public class SO implements ISimulador{
         // Para la nueva pestaña (Según Dispositivos)
         else if (modo==3){
             //Tabla Disco
+            DefaultTableModel model = (DefaultTableModel) tablaBloqueados.getModel();
+            model.setRowCount(0);
             if (planif.getColaES().size()>0){
                 //Tabla de bloqueados --> Mandar como parámetro la tabla correspondiente
-                DefaultTableModel model = (DefaultTableModel) tablaBloqueados.getModel();
-                model.setRowCount(0);
                 List<Object []> procesosDisco = new ArrayList<>();
                 int contador=0;
                 for (Proceso procesoBloqueado : planif.getColaES()){
                     contador++;
                     if (planif.getColaES().getDispositivo(procesoBloqueado).equals("Disco")) {
+                        Object [] fila = {contador,procesoBloqueado.getPID(), ((Integer) procesoBloqueado.getMemoria()).toString()+" MB"};
+                        procesosDisco.add(fila);
+                    }                    
+                }
+                for (Object [] fila: procesosDisco){
+                    model.addRow(fila);
+                }
+            }          
+        }
+        
+        else if (modo==4){
+            //Tabla Disco
+            DefaultTableModel model = (DefaultTableModel) tablaBloqueados.getModel();
+            model.setRowCount(0);
+            if (planif.getColaES().size()>0){
+                //Tabla de bloqueados --> Mandar como parámetro la tabla correspondiente
+                List<Object []> procesosDisco = new ArrayList<>();
+                int contador=0;
+                for (Proceso procesoBloqueado : planif.getColaES()){
+                    contador++;
+                    if (planif.getColaES().getDispositivo(procesoBloqueado).equals("Impresora")) {
+                        Object [] fila = {contador,procesoBloqueado.getPID(), ((Integer) procesoBloqueado.getMemoria()).toString()+" MB"};
+                        procesosDisco.add(fila);
+                    }                    
+                }
+                for (Object [] fila: procesosDisco){
+                    model.addRow(fila);
+                }
+            }          
+        }
+        
+         else if (modo==5){
+            //Tabla Disco
+            DefaultTableModel model = (DefaultTableModel) tablaBloqueados.getModel();
+            model.setRowCount(0);
+            if (planif.getColaES().size()>0){
+                //Tabla de bloqueados --> Mandar como parámetro la tabla correspondiente
+                List<Object []> procesosDisco = new ArrayList<>();
+                int contador=0;
+                for (Proceso procesoBloqueado : planif.getColaES()){
+                    contador++;
+                    if (planif.getColaES().getDispositivo(procesoBloqueado).equals("Teclado")) {
+                        Object [] fila = {contador,procesoBloqueado.getPID(), ((Integer) procesoBloqueado.getMemoria()).toString()+" MB"};
+                        procesosDisco.add(fila);
+                    }                    
+                }
+                for (Object [] fila: procesosDisco){
+                    model.addRow(fila);
+                }
+            }          
+        }
+        
+         else if (modo==6){
+            //Tabla Disco
+            DefaultTableModel model = (DefaultTableModel) tablaBloqueados.getModel();
+            model.setRowCount(0);
+            if (planif.getColaES().size()>0){
+                //Tabla de bloqueados --> Mandar como parámetro la tabla correspondiente
+                List<Object []> procesosDisco = new ArrayList<>();
+                int contador=0;
+                for (Proceso procesoBloqueado : planif.getColaES()){
+                    contador++;
+                    if (planif.getColaES().getDispositivo(procesoBloqueado).equals("Mouse")) {
+                        Object [] fila = {contador,procesoBloqueado.getPID(), ((Integer) procesoBloqueado.getMemoria()).toString()+" MB"};
+                        procesosDisco.add(fila);
+                    }                    
+                }
+                for (Object [] fila: procesosDisco){
+                    model.addRow(fila);
+                }
+            }          
+        }
+        
+         else if (modo==7){
+            //Tabla Disco
+            DefaultTableModel model = (DefaultTableModel) tablaBloqueados.getModel();
+            model.setRowCount(0);
+            if (planif.getColaES().size()>0){
+                //Tabla de bloqueados --> Mandar como parámetro la tabla correspondiente
+                List<Object []> procesosDisco = new ArrayList<>();
+                int contador=0;
+                for (Proceso procesoBloqueado : planif.getColaES()){
+                    contador++;
+                    if (planif.getColaES().getDispositivo(procesoBloqueado).equals("USB")) {
                         Object [] fila = {contador,procesoBloqueado.getPID(), ((Integer) procesoBloqueado.getMemoria()).toString()+" MB"};
                         procesosDisco.add(fila);
                     }                    
