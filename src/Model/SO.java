@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
@@ -503,7 +504,7 @@ public class SO implements ISimulador{
     //Graficar Barras de Progreso de la Cola de Proceso
         
     public void graficarColaProcesos(JPanel jp, JTable tblEjec, JTable tblListos,
-            JTable tblBloqueados, JTable tblFinal,JTable tblHistEjec, JTable tblHistBloqueados, JTable tlbListaProcesos){
+            JTable tblBloqueados, JTable tblFinal,JTable tblHistEjec, JTable tblHistBloqueados, JTable tlbListaProcesos, JTable tlbDisco){
         int MAX_ALTO = 120;
         jp.removeAll();
         for (int i = 0; i < planif.getColaProcesos().size(); i++) {
@@ -558,6 +559,7 @@ public class SO implements ISimulador{
         actualizarTablaEjecutando(tblEjec,1);
         actualizarTablaBloqueados(tblHistBloqueados,2);
         actualizarTablaBloqueados(tblBloqueados,1);
+        actualizarTablaBloqueados(tlbDisco,3);
         actualizarTablaListos(tblListos);
         actualizarTablaFinalizados(tblFinal);
         actualizarListaProcesos(tlbListaProcesos);
@@ -618,6 +620,7 @@ public class SO implements ISimulador{
     public void actualizarTablaBloqueados(JTable tablaBloqueados, int modo){
         DefaultTableModel tabla=(DefaultTableModel) tablaBloqueados.getModel();
         if(modo==1){
+            // modo 1: Tabla de Bloqueados
             tabla.setRowCount(0);
             if(planif.getColaES().size()>0){
                 for (Proceso procBloqueado: planif.getColaES()){
@@ -653,6 +656,28 @@ public class SO implements ISimulador{
                 }
             }
         }
+        // Para la nueva pestaña (Según Dispositivos)
+        else if (modo==3){
+            //Tabla Disco
+            if (planif.getColaES().size()>0){
+                //Tabla de bloqueados --> Mandar como parámetro la tabla correspondiente
+                DefaultTableModel model = (DefaultTableModel) tablaBloqueados.getModel();
+                model.setRowCount(0);
+                List<Object []> procesosDisco = new ArrayList<>();
+                int contador=0;
+                for (Proceso procesoBloqueado : planif.getColaES()){
+                    contador++;
+                    if (planif.getColaES().getDispositivo(procesoBloqueado).equals("Disco")) {
+                        Object [] fila = {contador,procesoBloqueado.getPID(), ((Integer) procesoBloqueado.getMemoria()).toString()+" MB"};
+                        procesosDisco.add(fila);
+                    }                    
+                }
+                for (Object [] fila: procesosDisco){
+                    model.addRow(fila);
+                }
+            }          
+        }
+                
     }
     
     public void actualizarTablaFinalizados(JTable tablaFinalizados){

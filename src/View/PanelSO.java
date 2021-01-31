@@ -37,7 +37,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
     // los históricos de ejecución y terminados
     public void actionPerformed(ActionEvent e) {
         if(encendido){
-            so.graficarColaProcesos(ColaProcesos,tblEjec,tblListos,tblBloqueados,tblFinal,tblHistEjec,tblHistBloqueados, tlbListaProcesos);
+            so.graficarColaProcesos(ColaProcesos,tblEjec,tblListos,tblBloqueados,tblFinal,tblHistEjec,tblHistBloqueados, tlbListaProcesos, tlbDisco);
             so.generarEstadisticas(lblTiempoUso, lblTiempoOcioso, lblTiempoEspProm, lblDuracion);
             so.graficarEspacioMemoria(MemoriaRAM);
             txtPID.setText(Integer.toString(Proceso.numeroProcesos));
@@ -154,6 +154,10 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         PanelProcesosBloqueados = new javax.swing.JPanel();
         ScrollHistoricoBloqueados = new javax.swing.JScrollPane();
         tblHistBloqueados = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        ScrollFinalizados2 = new javax.swing.JScrollPane();
+        tlbDisco = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1050,6 +1054,54 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
 
         TabbedPaneSO.addTab("Historial de Procesos", PanelTablaProcesosHistorico);
 
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Disco"));
+
+        tlbDisco.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "#", "PID", "Memoria"
+            }
+        ));
+        ScrollFinalizados2.setViewportView(tlbDisco);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(ScrollFinalizados2, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(ScrollFinalizados2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(1120, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(425, Short.MAX_VALUE))
+        );
+
+        TabbedPaneSO.addTab("Colas I/O", jPanel4);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1135,7 +1187,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
             // a la cola de listos
             if(so.crearProcesoPersonalizado(bt)){
                 System.out.println("Se creo nuevo proceso personalizado");
-                so.graficarColaProcesos(ColaProcesos,tblEjec,tblListos,tblBloqueados,tblFinal,tblHistEjec,tblHistBloqueados,tlbListaProcesos);
+                so.graficarColaProcesos(ColaProcesos,tblEjec,tblListos,tblBloqueados,tblFinal,tblHistEjec,tblHistBloqueados,tlbListaProcesos,tlbDisco);
                 //so.pintarListos(jpListos);
                 txtPID.setText(Proceso.numeroProcesos+"");
                 validate();
@@ -1250,6 +1302,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JScrollPane ScrollEjecutando;
     private javax.swing.JScrollPane ScrollFinalizados;
     private javax.swing.JScrollPane ScrollFinalizados1;
+    private javax.swing.JScrollPane ScrollFinalizados2;
     private javax.swing.JScrollPane ScrollHistoricoBloqueados;
     private javax.swing.JScrollPane ScrollHistoricoEjec;
     private javax.swing.JScrollPane ScrollListos;
@@ -1275,6 +1328,8 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAlgoritmoPlanificacion;
     private javax.swing.JLabel lblBursTime;
@@ -1293,6 +1348,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JTable tblHistBloqueados;
     private javax.swing.JTable tblHistEjec;
     private javax.swing.JTable tblListos;
+    private javax.swing.JTable tlbDisco;
     private javax.swing.JTable tlbListaProcesos;
     private javax.swing.JLabel txtAsigMemoria;
     private javax.swing.JTextField txtBurstTime;
