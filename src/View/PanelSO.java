@@ -38,7 +38,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(encendido){
             so.graficarColaProcesos(ColaProcesos,tblEjec,tblListos,tblBloqueados,tblFinal,tblHistEjec,tblHistBloqueados, tlbListaProcesos, tlbDisco,tlbImpresora,tlbTeclado,tlbMouse,tlbUSB);
-            so.generarEstadisticas(lblTiempoUso, lblTiempoOcioso, lblTiempoEspProm, lblDuracion);
+            so.generarEstadisticas(lblTiempoUso, lblTiempoOcioso, lblTiempoEspProm, lblDuracion,lblFragmentacion);
             so.graficarEspacioMemoria(MemoriaRAM);
             txtPID.setText(Integer.toString(Proceso.numeroProcesos));
             validate();
@@ -119,6 +119,8 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        lblFragmentacion = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         PanelLeyendaProcesos = new javax.swing.JPanel();
         LeyendaEjec = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -482,7 +484,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         PanelColaProcesos.setBorder(javax.swing.BorderFactory.createTitledBorder("Procesos"));
         PanelColaProcesos.setLayout(new java.awt.BorderLayout());
 
-        ColaProcesos.setLayout(new java.awt.FlowLayout(0));
+        ColaProcesos.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
         ColaProcesos.add(jScrollPane1);
 
         ScrollColaProcesos.setViewportView(ColaProcesos);
@@ -525,7 +527,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         lblDuracion.setText("0");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel1.setText("Tiempo de Uso:");
+        jLabel1.setText("Tiempo de uso (CPU):");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Tiempo ocioso:");
@@ -536,6 +538,12 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Duración de la simulación (milisegundos):");
 
+        lblFragmentacion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblFragmentacion.setText("0");
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel13.setText("Fragmentación Externa:");
+
         javax.swing.GroupLayout PanelEstadisticasLayout = new javax.swing.GroupLayout(PanelEstadisticas);
         PanelEstadisticas.setLayout(PanelEstadisticasLayout);
         PanelEstadisticasLayout.setHorizontalGroup(
@@ -544,25 +552,32 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
                 .addContainerGap()
                 .addGroup(PanelEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelEstadisticasLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblTiempoUso, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3))
+                        .addGroup(PanelEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(PanelEstadisticasLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblTiempoUso, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel3))
+                            .addGroup(PanelEstadisticasLayout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblTiempoOcioso, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel4)))
+                        .addGap(29, 29, 29)
+                        .addGroup(PanelEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelEstadisticasLayout.createSequentialGroup()
+                                .addComponent(lblDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 191, Short.MAX_VALUE))
+                            .addGroup(PanelEstadisticasLayout.createSequentialGroup()
+                                .addComponent(lblTiempoEspProm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())))
                     .addGroup(PanelEstadisticasLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(22, 22, 22)
-                        .addComponent(lblTiempoOcioso, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)))
-                .addGap(29, 29, 29)
-                .addGroup(PanelEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelEstadisticasLayout.createSequentialGroup()
-                        .addComponent(lblDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 207, Short.MAX_VALUE))
-                    .addGroup(PanelEstadisticasLayout.createSequentialGroup()
-                        .addComponent(lblTiempoEspProm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblFragmentacion, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         PanelEstadisticasLayout.setVerticalGroup(
             PanelEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -579,7 +594,11 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
                     .addComponent(lblTiempoOcioso)
                     .addComponent(jLabel4)
                     .addComponent(lblDuracion))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(PanelEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(lblFragmentacion))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         PanelLeyendaProcesos.setBorder(javax.swing.BorderFactory.createTitledBorder("Leyenda de Procesos"));
@@ -683,19 +702,19 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
                 .addComponent(LeyendaEjec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                 .addComponent(LeyendaError, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                 .addComponent(LeyendaBloqueados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                 .addComponent(LeyendaFinalizados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addComponent(LeyendoListos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7)
@@ -751,7 +770,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
                         .addComponent(PanelLeyendaProcesos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(PanelMemoriaRAM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 35, Short.MAX_VALUE))))
         );
 
         PanelConfiguracion.getAccessibleContext().setAccessibleName("Parámetros de la Simulación");
@@ -1467,6 +1486,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1487,6 +1507,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JLabel lblAlgoritmoPlanificacion;
     private javax.swing.JLabel lblBursTime;
     private javax.swing.JLabel lblDuracion;
+    private javax.swing.JLabel lblFragmentacion;
     private javax.swing.JLabel lblPID;
     private javax.swing.JLabel lblTiempoEspProm;
     private javax.swing.JLabel lblTiempoOcioso;

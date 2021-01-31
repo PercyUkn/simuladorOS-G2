@@ -807,11 +807,12 @@ public class SO implements ISimulador{
     }
     
     public void generarEstadisticas(JLabel tUso, JLabel tOcio,
-            JLabel tEsperaProm, JLabel tDuracion){
+            JLabel tEsperaProm, JLabel tDuracion, JLabel lblFragmentacion){
         tUso.setText(Long.toString(cpu.tiempoUso));
         tOcio.setText(Long.toString(cpu.tiempoOcioso));
         tEsperaProm.setText(" "+planif.getTiempoEsperaProm());
         tDuracion.setText(Long.toString(planif.getTiempoFinal()));
+        lblFragmentacion.setText(Integer.toString(calcularFragmentacion())+" MB");
     }
         
     public void graficarEspacioMemoria(JPanel jp){
@@ -830,6 +831,16 @@ public class SO implements ISimulador{
         }
     }
     
+    public int calcularFragmentacion(){
+        int fragmentacionTotal=0;
+        for (Object o : ram) {
+               if(o instanceof Hueco){
+                    Hueco h = (Hueco)o;
+                    fragmentacionTotal+=(h.getDirFin()-h.getDirInicio());
+                }
+            }
+            return fragmentacionTotal;
+        }
 }
 
 

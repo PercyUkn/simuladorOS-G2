@@ -7,8 +7,8 @@ public class Proceso {
     //0-5: numero random de dispositivo, donde 0:Impresora, 1: Disco, ... 
     //Detallado en la funcion getDispositivoES de la clase ColaES 
     public int disp;
-    static final int MAX_BT = 100;
-    static final int MIN_BT=50;
+    static final int MAXIMO_BURSTTIME = 100;
+    static final int MINIMO_BURSTTIME=40;
     private boolean error = false;
     private int PCError = 0;
     //momento en el que se crea el proceso
@@ -96,7 +96,7 @@ public class Proceso {
     }
     
     public double getTamanio(){
-        return (1.0*pcb.burstTime/MAX_BT);
+        return (1.0*pcb.burstTime/MAXIMO_BURSTTIME);
     }
     
     public int getPC(){

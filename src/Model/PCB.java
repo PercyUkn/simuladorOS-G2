@@ -22,13 +22,13 @@ public class PCB {
     
     private void generarValoresAleatorios(){
         //Min + (int)(Math.random() * ((Max - Min) + 1))
-        burstTime = Proceso.MIN_BT + (int)(Math.random()*((Proceso.MAX_BT-Proceso.MIN_BT)+1));
+        burstTime = Proceso.MINIMO_BURSTTIME + (int)(Math.random()*((Proceso.MAXIMO_BURSTTIME-Proceso.MINIMO_BURSTTIME)+1));
         //Valor aleatorio entero entre 1 y 5
         prioridad = (int)(Math.random()*5+1);
         generarMemoria();
     }
     private void generarMemoria(){
         //Valor aleatorio en base a el tiempo de burst time
-        memoria= (int)(burstTime - 50 + 10 * Math.random()+1);
+        memoria= (int)(burstTime - 40 + 10 * Math.random()+1);
     }
 }
