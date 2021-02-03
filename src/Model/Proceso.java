@@ -17,6 +17,10 @@ public class Proceso {
     private long tiempoFinalizacion;
     //momento en el que el proceso finaliza
     private long tiempoPrimeraAtencion = -1;
+    //Para el cálculo del tiempo de espera en la cola de listos
+    private long tiempoInicioEspera;
+    private long tiempoFinEspera;
+    private long tiempoEsperaTotal=-1;
     //cantidad de memoria que se le asigna al inicio de la creacion
     private int memoriaInicio;
     
@@ -31,6 +35,7 @@ public class Proceso {
         numeroProcesos++;
         //hallamos el tiempo actual del sistema en milisengundos
         tiempoCreacion = System.currentTimeMillis();
+        tiempoInicioEspera=tiempoCreacion;
     }
     //cuando se coloca el parametro burst time 
     public Proceso(int bt) {
@@ -40,6 +45,7 @@ public class Proceso {
         numeroProcesos++;
         //hallamos el tiempo actual del sistema en milisengundos
         tiempoCreacion = System.currentTimeMillis();
+        tiempoInicioEspera=tiempoCreacion;
     }
     private void generarError(){
         double rand = Math.random();
@@ -146,6 +152,32 @@ public class Proceso {
     public void setTiempoPrimeraAtencion(long tiempoPrimeraAtencion) {
         this.tiempoPrimeraAtencion = tiempoPrimeraAtencion;
     }
+
+    public long getTiempoInicioEspera() {
+        return tiempoInicioEspera;
+    }
+
+    public void setTiempoInicioEspera(long tiempoInicioEspera) {
+        this.tiempoInicioEspera = tiempoInicioEspera;
+    }
+
+    public long getTiempoFinEspera() {
+        return tiempoFinEspera;
+    }
+
+    public void setTiempoFinEspera(long tiempoFinEspera) {
+        this.tiempoFinEspera = tiempoFinEspera;
+    }
+
+    public long getTiempoEsperaTotal() {
+        return tiempoEsperaTotal;
+    }
+
+    public void setTiempoEsperaTotal(long tiempoEsperaTotal) {
+        this.tiempoEsperaTotal = tiempoEsperaTotal;
+    }
+    
+    
     
     public String getEstadoName(int estado){
         switch (estado){

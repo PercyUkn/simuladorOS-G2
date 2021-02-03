@@ -88,7 +88,7 @@ public class RAM extends LinkedList<Object>{
             }
             //Si hay un hueco a la izquierda y a la derecha
             if(h1!=null && h2!=null){
-                add(i, new Hueco(p.getMemoria()+h1.getCapacidad()+2
+                add(i, new Hueco(p.getMemoria()+h1.getCapacidad()
                         +h2.getCapacidad(), h1.getDirInicio()));
                 remove(h1);
                 remove(h2);
@@ -98,7 +98,7 @@ public class RAM extends LinkedList<Object>{
 
             //Si hay un hueco a la izquierda
             if(h1!=null){
-                add(i, new Hueco(p.getMemoria()+h1.getCapacidad()+1, 
+                add(i, new Hueco(p.getMemoria()+h1.getCapacidad(), 
                         h1.getDirInicio()));
                 remove(h1);
                 remove(p);
@@ -107,7 +107,7 @@ public class RAM extends LinkedList<Object>{
 
             //Si hay un hueco a la derecha
             if(h2!=null){
-                add(i, new Hueco(p.getMemoria()+h2.getCapacidad()+1, 
+                add(i, new Hueco(p.getMemoria()+h2.getCapacidad(), 
                         p.getMemoriaInicio()));
                 remove(h2);
                 remove(p);
