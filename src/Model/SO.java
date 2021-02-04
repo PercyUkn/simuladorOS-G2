@@ -898,7 +898,9 @@ public class SO implements ISimulador{
         for (Object o : ram) {
                if(o instanceof Hueco){
                     Hueco h = (Hueco)o;
+                    if (h.getCapacidad()<=30){
                     fragmentacionTotal+=(h.getDirFin()-h.getDirInicio());
+                    }
                 }
             }
             return fragmentacionTotal;
