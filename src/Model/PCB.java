@@ -17,6 +17,7 @@ public class PCB {
         this.PID = pid;
         burstTime = bt;
         estado = Proceso.NUEVO;
+        prioridad = (int)(Math.random()*5+1);
         generarMemoria();
     }
     
