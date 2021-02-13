@@ -1,7 +1,13 @@
 
 package Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ColaES extends Cola{
+
+    private List<Interrupcion> atendidos = new ArrayList<>();
+    
     @Override
     public void addLast(Proceso p) {
         super.addLast(p);
@@ -40,4 +46,13 @@ public class ColaES extends Cola{
         }
         return dispositivoES;
     }
+
+    public void addAtendidos(Proceso p, long tiempoInicio){
+        this.atendidos.add(new Interrupcion(p, tiempoInicio));
+    }
+
+    public List<Interrupcion> getAtendidos() {
+        return atendidos;
+    }
+    
 }

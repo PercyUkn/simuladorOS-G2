@@ -15,7 +15,7 @@ public class Proceso {
     private long tiempoCreacion;
     //momento en el que el proceso finaliza
     private long tiempoFinalizacion;
-    //momento en el que el proceso finaliza
+    //momento en el que el proceso es atendido por primera vez(Tiempo de respuesta)
     private long tiempoPrimeraAtencion = -1;
     //Para el cálculo del tiempo de espera en la cola de listos
     private long tiempoInicioEspera;
@@ -193,6 +193,15 @@ public class Proceso {
     public long getTiempoCreacion() {
         return tiempoCreacion;
     }
+
+    public int getDisp() {
+        return disp;
+    }
+
+    public void setDisp(int disp) {
+        this.disp = disp;
+    }
+    
     
     
 }

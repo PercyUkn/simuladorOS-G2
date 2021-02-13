@@ -40,7 +40,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
     // los históricos de ejecución y terminados
     public void actionPerformed(ActionEvent e) {
         if(encendido){
-            so.graficarColaProcesos(ColaProcesos,tblEjec,tblListos,tblBloqueados,tblFinal,tblHistEjec,tblHistBloqueados, tlbListaProcesos, tlbDisco,tlbImpresora,tlbTeclado,tlbMouse,tlbUSB);
+            so.graficarColaProcesos(ColaProcesos,tblEjec,tblListos,tblBloqueados,tblFinal,tblHistEjec,tblHistBloqueados, tlbListaProcesos, tlbDisco,tlbImpresora,tlbTeclado,tlbMouse,tlbUSB, tlbInterrupciones);
             so.generarEstadisticas(lblTiempoUso, lblTiempoOcioso, lblTiempoEspProm, lblDuracion,lblFragmentacion,lblTiempoRespuesta,lblWaitingTime);
             so.graficarEspacioMemoria(MemoriaRAM);
             txtPID.setText(Integer.toString(Proceso.numeroProcesos));
@@ -179,6 +179,10 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         jPanel8 = new javax.swing.JPanel();
         ScrollFinalizados6 = new javax.swing.JScrollPane();
         tlbUSB = new javax.swing.JTable();
+        jPanel9 = new javax.swing.JPanel();
+        PanelProcesosEjecutados1 = new javax.swing.JPanel();
+        ScrollHistoricoEjec1 = new javax.swing.JScrollPane();
+        tlbInterrupciones = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -595,9 +599,9 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
                                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(PanelEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTiempoEspProm, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
-                            .addComponent(lblTiempoRespuesta, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
-                            .addComponent(lblWaitingTime, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)))
+                            .addComponent(lblTiempoEspProm, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
+                            .addComponent(lblTiempoRespuesta, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
+                            .addComponent(lblWaitingTime, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)))
                     .addGroup(PanelEstadisticasLayout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
@@ -733,19 +737,19 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
                 .addComponent(LeyendaEjec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                 .addComponent(LeyendaError, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                 .addComponent(LeyendaBloqueados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
                 .addComponent(LeyendaFinalizados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
                 .addComponent(LeyendoListos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7)
@@ -1042,7 +1046,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
             PanelProcesosEjecutadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelProcesosEjecutadosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ScrollHistoricoEjec, javax.swing.GroupLayout.DEFAULT_SIZE, 926, Short.MAX_VALUE)
+                .addComponent(ScrollHistoricoEjec, javax.swing.GroupLayout.DEFAULT_SIZE, 953, Short.MAX_VALUE)
                 .addContainerGap())
         );
         PanelProcesosEjecutadosLayout.setVerticalGroup(
@@ -1267,22 +1271,19 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(217, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap(294, Short.MAX_VALUE))
+                .addContainerGap(254, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(284, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(470, 470, 470))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1300,6 +1301,68 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
         );
 
         TabbedPaneSO.addTab("Colas I/O", jPanel4);
+
+        PanelProcesosEjecutados1.setBorder(javax.swing.BorderFactory.createTitledBorder("Registro de Atención de Interrupciones"));
+
+        tlbInterrupciones.setAutoCreateRowSorter(true);
+        tlbInterrupciones.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "#", "Tiempo Simulación", "PID del proceso atendido", "Código Int.", "Descripción"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tlbInterrupciones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ScrollHistoricoEjec1.setViewportView(tlbInterrupciones);
+
+        javax.swing.GroupLayout PanelProcesosEjecutados1Layout = new javax.swing.GroupLayout(PanelProcesosEjecutados1);
+        PanelProcesosEjecutados1.setLayout(PanelProcesosEjecutados1Layout);
+        PanelProcesosEjecutados1Layout.setHorizontalGroup(
+            PanelProcesosEjecutados1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelProcesosEjecutados1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ScrollHistoricoEjec1, javax.swing.GroupLayout.DEFAULT_SIZE, 1349, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        PanelProcesosEjecutados1Layout.setVerticalGroup(
+            PanelProcesosEjecutados1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelProcesosEjecutados1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ScrollHistoricoEjec1, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1629, Short.MAX_VALUE)
+            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel9Layout.createSequentialGroup()
+                    .addGap(108, 108, 108)
+                    .addComponent(PanelProcesosEjecutados1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(140, Short.MAX_VALUE)))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 837, Short.MAX_VALUE)
+            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel9Layout.createSequentialGroup()
+                    .addGap(45, 45, 45)
+                    .addComponent(PanelProcesosEjecutados1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(53, Short.MAX_VALUE)))
+        );
+
+        TabbedPaneSO.addTab("Interrupciones", jPanel9);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1397,7 +1460,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
             // a la cola de listos
             if(so.crearProcesoPersonalizado(bt)){
                 System.out.println("Se creo nuevo proceso personalizado");
-                so.graficarColaProcesos(ColaProcesos,tblEjec,tblListos,tblBloqueados,tblFinal,tblHistEjec,tblHistBloqueados,tlbListaProcesos,tlbDisco,tlbImpresora,tlbTeclado,tlbMouse,tlbUSB);
+                so.graficarColaProcesos(ColaProcesos,tblEjec,tblListos,tblBloqueados,tblFinal,tblHistEjec,tblHistBloqueados,tlbListaProcesos,tlbDisco,tlbImpresora,tlbTeclado,tlbMouse,tlbUSB,tlbInterrupciones);
                 //so.pintarListos(jpListos);
                 txtPID.setText(Proceso.numeroProcesos+"");
                 validate();
@@ -1501,6 +1564,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JPanel PanelProcesos;
     private javax.swing.JPanel PanelProcesosBloqueados;
     private javax.swing.JPanel PanelProcesosEjecutados;
+    private javax.swing.JPanel PanelProcesosEjecutados1;
     private javax.swing.JPanel PanelSimulacion;
     private javax.swing.JPanel PanelSistemaOperativo;
     private javax.swing.JPanel PanelTablaProcesosHistorico;
@@ -1519,6 +1583,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JScrollPane ScrollFinalizados6;
     private javax.swing.JScrollPane ScrollHistoricoBloqueados;
     private javax.swing.JScrollPane ScrollHistoricoEjec;
+    private javax.swing.JScrollPane ScrollHistoricoEjec1;
     private javax.swing.JScrollPane ScrollListos;
     private javax.swing.JScrollPane ScrollMemoriaRAM;
     private javax.swing.JTabbedPane TabbedPaneSO;
@@ -1551,6 +1616,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAlgoritmoPlanificacion;
     private javax.swing.JLabel lblBursTime;
@@ -1574,6 +1640,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JTable tblListos;
     private javax.swing.JTable tlbDisco;
     private javax.swing.JTable tlbImpresora;
+    private javax.swing.JTable tlbInterrupciones;
     private javax.swing.JTable tlbListaProcesos;
     private javax.swing.JTable tlbMouse;
     private javax.swing.JTable tlbTeclado;

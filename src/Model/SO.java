@@ -445,6 +445,7 @@ public class SO implements ISimulador{
                             pt = ces.getFirst();
                         if(pt!=null){
                             ces.remove(pt);
+                            ces.addAtendidos(pt,tiempoInicio);
                             //Pero no sería aquí también pt.setEstado(Proceso.LISTO)
                             cl.addLast(pt);
                         }
@@ -453,6 +454,7 @@ public class SO implements ISimulador{
                             pt = ces.getFirst();
                         if(pt!=null){
                             ces.remove(pt);
+                            ces.addAtendidos(pt,tiempoInicio);
                             //Que vuelva a dónde se ejecutó
                             pt.setEstado(Proceso.LISTO);
                             cpu.setActual(pt);
@@ -565,7 +567,7 @@ public class SO implements ISimulador{
         
     public void graficarColaProcesos(JPanel jp, JTable tblEjec, JTable tblListos,
             JTable tblBloqueados, JTable tblFinal,JTable tblHistEjec, JTable tblHistBloqueados, JTable tlbListaProcesos, JTable tlbDisco, 
-            JTable tlbImpresora, JTable tlbTeclado, JTable tlbMouse, JTable tlbUSB){
+            JTable tlbImpresora, JTable tlbTeclado, JTable tlbMouse, JTable tlbUSB, JTable tlbInterrupciones){
         int MAX_ALTO = 120;
         jp.removeAll();
         for (int i = 0; i < planif.getColaProcesos().size(); i++) {
@@ -618,13 +620,17 @@ public class SO implements ISimulador{
         jp.repaint();
         actualizarTablaEjecutando(tblHistEjec,2);
         actualizarTablaEjecutando(tblEjec,1);
+        // Histórico de Bloqueados
         actualizarTablaBloqueados(tblHistBloqueados,2);
+        // Cola de espera (Total)
         actualizarTablaBloqueados(tblBloqueados,1);
+        // Cola de espera por dispositivo
         actualizarTablaBloqueados(tlbDisco,3);
         actualizarTablaBloqueados(tlbImpresora,4);
         actualizarTablaBloqueados(tlbTeclado,5);
         actualizarTablaBloqueados(tlbMouse,6);
         actualizarTablaBloqueados(tlbUSB,7);
+        actualizarTablaBloqueados(tlbInterrupciones,8);
         actualizarTablaListos(tblListos);
         actualizarTablaFinalizados(tblFinal);
         actualizarListaProcesos(tlbListaProcesos);
@@ -710,6 +716,7 @@ public class SO implements ISimulador{
                         tabla.addRow(fila);
                     }
                     else{
+                        // Si los PID's son iguales, entonces reemplaza el valor anterior por el actual
                         if(tabla.getValueAt(numeroFilas-1, 0)== fila[0]){
                             tabla.removeRow(numeroFilas-1);
                             tabla.addRow(fila);
@@ -806,7 +813,8 @@ public class SO implements ISimulador{
             }          
         }
         
-         else if (modo==7){
+        
+        else if (modo==7){
             //Tabla Disco
             DefaultTableModel model = (DefaultTableModel) tablaBloqueados.getModel();
             model.setRowCount(0);
@@ -826,7 +834,24 @@ public class SO implements ISimulador{
                 }
             }          
         }
-                
+        
+         else if (modo==8){
+            //Tabla Disco
+            DefaultTableModel model = (DefaultTableModel) tablaBloqueados.getModel();
+            model.setRowCount(0);
+            if (planif.getColaES().getAtendidos().size()>0){
+                //Tabla de bloqueados --> Mandar como parámetro la tabla correspondiente
+                List<Object []> interrupcionesGeneradas = new ArrayList<>();
+                int contador=0;
+                for (Interrupcion interrupcion : planif.getColaES().getAtendidos()){
+                    contador++;
+                    Object [] fila = {contador,interrupcion.getTiempoSimulacion(), interrupcion.getPID(), interrupcion.getCodigoInterrupcion(), interrupcion.getDescripcion()};
+                    interrupcionesGeneradas.add(fila);
+                    model.addRow(fila);
+                }
+            }          
+        }
+        
     }
     
     public void actualizarTablaFinalizados(JTable tablaFinalizados){
