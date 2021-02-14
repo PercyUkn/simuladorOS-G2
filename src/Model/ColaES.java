@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import sun.java2d.d3d.D3DRenderQueue;
 
 public class ColaES extends Cola{
 
