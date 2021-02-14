@@ -30,10 +30,34 @@ public class SO implements ISimulador{
     long tiempoInicio;
     long duracion;
 
-    public SO() {
+    public long getTiempoInicio() {
+        return tiempoInicio;
+    }
+
+    public CPU getCpu() {
+        return cpu;
+    }
+    
+    
+
+    private SO() {
         cpu = new CPU();
         planif = new Planificador();
         ram = new RAM(maxMemoria);
+    }
+    
+    // Implementando Singleton
+    public static SO getInstance(){
+        if (so==null){
+            so = new SO();
+        }
+        return so;
+    }
+    
+    private static SO so = null;
+
+    public Planificador getPlanif() {
+        return planif;
     }
 
     public SO(int politica, boolean apropiativa, int asignacionMemoria) {
@@ -128,12 +152,22 @@ public class SO implements ISimulador{
         private final Timer t = new Timer(51, this);
         // Contiene la lista de todos los procesos
         private final ColaProcesos cp = new ColaProcesos();
-        private final ColaES ces = new ColaES();
+        private final ColaES ces = ColaES.getIntance();
         private final ColaListos cl = new ColaListos();
         
         private int politica = FCFS;
         private boolean apropiativa = true;
         private int quantumRestante = quantum;
+
+        public ColaListos getCl() {
+            return cl;
+        }
+
+                
+        public boolean isApropiativa() {
+            return apropiativa;
+        }
+        
 
         Despachador dspch = new Despachador();
 
@@ -443,7 +477,7 @@ public class SO implements ISimulador{
                     if(apropiativa){
                         if(ces.size()>0)
                             pt = ces.getFirst();
-                        if(pt!=null){
+                        if(pt!=null && pt.getDisp()!=2){
                             ces.remove(pt);
                             ces.addAtendidos(pt,tiempoInicio);
                             //Pero no sería aquí también pt.setEstado(Proceso.LISTO)
@@ -452,7 +486,7 @@ public class SO implements ISimulador{
                     }else{
                         if(ces.size()>0)
                             pt = ces.getFirst();
-                        if(pt!=null){
+                        if(pt!=null && pt.getDisp()!=2){
                             ces.remove(pt);
                             ces.addAtendidos(pt,tiempoInicio);
                             //Que vuelva a dónde se ejecutó

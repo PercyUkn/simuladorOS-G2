@@ -1,19 +1,82 @@
 
 package Model;
 
+import View.PanelInterrupcionTeclado;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import sun.java2d.d3d.D3DRenderQueue;
 
 public class ColaES extends Cola{
 
     private List<Interrupcion> atendidos = new ArrayList<>();
     
+    private static ColaES ces;
+    
+    private ColaES(){
+    }
+    
+    public static ColaES getIntance(){
+        if (ces == null)
+        { ces = new ColaES();}
+        return ces;
+    }
+    
     @Override
+    //Cuándo usa este método es porque ya agrego a la cola de espera
     public void addLast(Proceso p) {
         super.addLast(p);
         p.setEstado(Proceso.BLOQUEADO);
         // Generar Dispositivo de ES que genera la interrupcion
         p.disp = (int)(Math.random()*5);
+        if (p.disp==2){ // SI SE TRATA DEL TECLADO
+            PanelInterrupcionTeclado tecla = new PanelInterrupcionTeclado(p);
+            tecla.setVisible(true);
+            tecla.addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    super.keyPressed(e); //To change body of generated methods, choose Tools | Templates.
+                    tecla.dispose();
+                    System.out.println("Se presiono una tecla");
+                    ColaES ces = ColaES.getIntance();
+                   
+                    
+                    //SO y Planificador
+                    SO so = SO.getInstance();
+                    SO.Planificador planif = so.getPlanif();
+                    SO.CPU cpu = so.getCpu();
+                    ColaListos cl = planif.getCl();
+                    long tiempoInicio = so.getTiempoInicio();
+                    
+                    if (planif.isApropiativa()){
+                         if(ces.size()>0)
+                            {
+                                ces.remove(p);
+                                ces.addAtendidos(p,tiempoInicio);
+                                cl.addLast(p);
+                            }
+                    }
+                    else {
+                        if(ces.size()>0)
+                        {
+                             ces.remove(p);
+                             ces.addAtendidos(p,tiempoInicio);
+                             p.setEstado(Proceso.LISTO);
+                             cpu.setActual(p);
+                        }
+                    }
+                    //Vuelve a planificar todo
+                    planif.actionPerformed(new ActionEvent(this, modCount, "reqIO"));
+                }
+                
+            });
+        }
     }
     
     public int getMemoriaUsada(){

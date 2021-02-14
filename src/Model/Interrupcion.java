@@ -17,7 +17,7 @@ public class Interrupcion {
     private String descripcion;
     
     public Interrupcion(Proceso p, long tiempoInicio){
-        ColaES ces = new ColaES();
+        ColaES ces = ColaES.getIntance();
         this.tiempoSimulacion=System.currentTimeMillis()-tiempoInicio;
         this.PID=p.getPID();
         this.codigoInterrupcion=p.getDisp();

@@ -17,14 +17,14 @@ import javax.swing.Timer;
 
 /**
  *
- * @author Jesus
+ * @author Percy
  */
 public class PanelSO extends javax.swing.JFrame implements ActionListener{
     static int delay = 51;
     private boolean encendido = false;
     
     private final Timer t = new Timer(delay, this);
-    private final SO so = new SO();
+    private final SO so = SO.getInstance();
     private final Usuario u = new Usuario(so);
         
     public PanelSO() {
@@ -1310,7 +1310,7 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
 
             },
             new String [] {
-                "#", "Tiempo Simulación", "PID del proceso atendido", "Código Int.", "Descripción"
+                "#", "Tiempo Simulación (ms)", "PID del proceso atendido", "Código Int.", "Descripción"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -1477,6 +1477,9 @@ public class PanelSO extends javax.swing.JFrame implements ActionListener{
     // Se activa cuándo hacen click sobre el botón para iniciar o terminar la simulación
     private void btnPlayStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayStopActionPerformed
         iniciarSimulacion();
+        //PanelInterrupcionTeclado tecla = new PanelInterrupcionTeclado();
+        //tecla.setVisible(true);
+        
     }//GEN-LAST:event_btnPlayStopActionPerformed
 
     // Utiliza el valor del slider para ajustar el delay
