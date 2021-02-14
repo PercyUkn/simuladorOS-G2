@@ -32,4 +32,10 @@ public class PCB {
         //Valor aleatorio en base a el tiempo de burst time
         memoria= (int)(burstTime - 40 + 10 * Math.random()+1);
     }
+
+    @Override
+    public String toString() {
+        return "PCB{" + "PID=" + PID + ", estado=" + estado + '}';
+    }    
+    
 }

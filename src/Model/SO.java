@@ -267,6 +267,9 @@ public class SO implements ISimulador{
             return duracion;
         }
         
+       
+        
+        
         public int getPolitica(){
             return politica;
         }
@@ -476,24 +479,35 @@ public class SO implements ISimulador{
                     Proceso pt = null;
                     if(apropiativa){
                         if(ces.size()>0)
-                            pt = ces.getFirst();
+                            {
+                                pt = ces.getNextProcesoGestionable();
+                                //System.out.println("Proceso seleccionado (posible): " + pt);
+                                
+                            }
+                        // Si no es una interrupción de teclado, ya la puede quitar
                         if(pt!=null && pt.getDisp()!=2){
                             ces.remove(pt);
                             ces.addAtendidos(pt,tiempoInicio);
+                            //System.out.println("Cola I/O:" + ces);
                             //Pero no sería aquí también pt.setEstado(Proceso.LISTO)
+                            //System.out.println("Quitando de ces el proceso: " + pt);
                             cl.addLast(pt);
                         }
                     }else{
                         if(ces.size()>0)
-                            pt = ces.getFirst();
+                            pt = ces.getNextProcesoGestionable();
+                        // Si no es una interrupción de teclado, ya la puede quitar
                         if(pt!=null && pt.getDisp()!=2){
                             ces.remove(pt);
                             ces.addAtendidos(pt,tiempoInicio);
+                            //System.out.println("Cola I/O:" + ces);
+                            //System.out.println("Quitando de ces el proceso: " + pt);
                             //Que vuelva a dónde se ejecutó
                             pt.setEstado(Proceso.LISTO);
                             cpu.setActual(pt);
                         }
                     }
+                    // Debería aquí también poner el if?
                     actionPerformed(new ActionEvent(this, tipo, "reqIO"));
                     break;
             }

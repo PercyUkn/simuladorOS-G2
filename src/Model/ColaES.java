@@ -117,4 +117,21 @@ public class ColaES extends Cola{
         return atendidos;
     }
     
+     //Para gestionar interrupciones de FIN que no sean de teclado
+        public Proceso getNextProcesoGestionable(){
+            Proceso p = null;
+            if (ces!=null){
+                if (ces.size()>0){
+                    for (int i=0; i<ces.size();i++){
+                        //Da el siguiente que no sea Interrupción de teclado
+                        if (ces.get(i).getDisp()!=2){
+                            p=ces.get(i);
+                            break;
+                        }
+                    }
+                }
+            
+            }
+           return p;
+        }
 }

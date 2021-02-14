@@ -201,7 +201,11 @@ public class Proceso {
     public void setDisp(int disp) {
         this.disp = disp;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Proceso{" + "disp=" + disp + ", pcb=" + pcb + '}';
+    }
     
     
 }
